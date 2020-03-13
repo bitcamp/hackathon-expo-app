@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axiosRequest from "Backend.js";
 
 import Error from "Error.js";
@@ -10,7 +10,6 @@ import "App.css";
 const InvalidErr = <Error text="Invalid login code!" />;
 
 export default function AdminLogin(props) {
-  const [loggedIn, setLoggedIn] = useState(false);
   const [error, setError] = useState("");
 
   const onLogin = accessCode => {
@@ -18,8 +17,6 @@ export default function AdminLogin(props) {
     let codeExists = accessCode !== undefined && accessCode !== "";
 
     if (codeExists) {
-      setLoggedIn(true);
-
       // Try to set logged in state for admin
       axiosRequest
         .post("api/login/admin", { access_code: accessCode })
@@ -27,21 +24,18 @@ export default function AdminLogin(props) {
           if (status === "Logged in as admin") {
             // Log in was successful
             // Clear errors on component
-            setLoggedIn(true);
             setError("");
 
             // Move to admin page
-            this.props.history.push({
+            props.history.push({
               pathname: "/admin"
             });
           } else {
             // Log in failed, show error
-            setLoggedIn(false);
             setError(InvalidErr);
           }
         });
     } else {
-      setLoggedIn(false);
       setError(InvalidErr);
     }
   };
@@ -49,8 +43,6 @@ export default function AdminLogin(props) {
   useEffect(() => {
     axiosRequest.get("api/whoami").then(credentials => {
       if (credentials !== undefined && credentials.user_type === "admin") {
-        setLoggedIn(true);
-
         props.history.push({
           pathname: "/admin"
         });
