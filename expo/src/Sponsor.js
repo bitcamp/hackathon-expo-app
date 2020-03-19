@@ -32,16 +32,16 @@ library.add(faCircle, faCircleSolid);
 function WinnersSubmmitedModal() {
   return (
     <div
-      class="modal fade bd-example-modal-sm"
+      className="modal fade bd-example-modal-sm"
       id="winnersSubmmitedModal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="mySmallModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-sm modal-dialog-centered">
-        <div class="modal-content" style={{ border: "0px solid" }}>
-          <div class="modal-header" style={{ border: "0px solid" }}>
+      <div className="modal-dialog modal-sm modal-dialog-centered">
+        <div className="modal-content" style={{ border: "0px solid" }}>
+          <div className="modal-header" style={{ border: "0px solid" }}>
             <button
               type="button"
               class="close"
@@ -52,7 +52,7 @@ function WinnersSubmmitedModal() {
             </button>
           </div>
           <div
-            class="modal-body"
+            className="modal-body"
             style={{
               color: "white",
               textAlign: "center",
@@ -185,9 +185,7 @@ export class SubmitModal extends Component {
                       {modal.warning.message}
                     </Error>
                   )
-                ) : (
-                  <Fragment></Fragment>
-                )}
+                ) : null}
                 <Error
                   icon={modal.warning.icon}
                   iconstyle={modal.warning.iconstyle}
@@ -269,9 +267,7 @@ function Task(props) {
         >
           {winners}
         </ul>
-      ) : (
-        <Fragment></Fragment>
-      )}
+      ) : null}
     </Fragment>
   );
 }

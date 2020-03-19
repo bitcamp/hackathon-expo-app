@@ -41,7 +41,7 @@ class SponsorModule extends Component {
     axiosRequest.get("api/companies").then(sponsors => {
       this.setState({
         sponsors: sponsors, // this is the list of challenges
-        sponsor_names: [... new Set (sponsors.map(x => x['company_name']))]
+        sponsor_names: [...new Set(sponsors.map(x => x["company_name"]))]
       });
     });
   }
@@ -201,7 +201,7 @@ class SponsorModule extends Component {
             Seed Sponsors/Challenges from Devpost
           </button>
           <SubmitInputModal
-            modalId="seed-devpost-challenges"
+            id="seed-devpost-challenges"
             modalTitle="Seed Sponsors and Challenges from Devpost"
             bodyText="Give us your hackathon's Devpost link (with the https) and we'll seed your Expo App
                 with all of your sponsors and challenges! Make sure you're following our Devpost naming guidelines
@@ -253,6 +253,11 @@ class SponsorModule extends Component {
                   <div>
                     <CreateChallengeModal
                       createID={"modalCreateChallenge" + key.toString()}
+                      key={
+                        "modalCreateChallenge" +
+                        key.toString() +
+                        elt.challenges.length
+                      }
                       company={elt.company_name}
                       sponsorID={elt.id}
                       onCreate={this.loadCompanies.bind(this)}

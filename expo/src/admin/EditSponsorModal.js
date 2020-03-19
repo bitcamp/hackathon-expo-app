@@ -36,17 +36,6 @@ class EditSponsorModal extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      access_code: nextProps.sponsorCode,
-      invalid_access: false,
-      company_name: nextProps.sponsorName,
-      missing_access: false,
-      missing_company: false,
-      showConfirmation: false
-    });
-  }
-
   toggleConfirmation = () => {
     this.setState({ showConfirmation: !this.state.showConfirmation });
   };
@@ -94,24 +83,11 @@ class EditSponsorModal extends Component {
           .getElementById("btnCancelEditSponsorModal" + this.props.editID)
           .click();
       } else {
-        // Show errors
-        if (!validAccess) {
-          this.setState({ invalid_access: true });
-        } else {
-          this.setState({ invalid_access: false });
-        }
-
-        if (missingCompany) {
-          this.setState({ missing_company: true });
-        } else {
-          this.setState({ missing_company: false });
-        }
-
-        if (missingAccess) {
-          this.setState({ missing_access: true });
-        } else {
-          this.setState({ missing_access: false });
-        }
+        this.setState({
+          invalid_access: !validAccess,
+          missing_company: missingCompany,
+          missing_access: missingAccess
+        });
       }
     });
   };
