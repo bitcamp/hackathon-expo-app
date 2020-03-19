@@ -4,11 +4,6 @@ import axiosRequest from "Backend.js";
 import Error from "Error";
 import Modal from "components/Modal";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
-library.add(faTimes);
-library.add(faCheck);
-
 class CreateProjectModal extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +35,7 @@ class CreateProjectModal extends Component {
   };
 
   render = () => (
-    <Modal id={this.props.createID}>
+    <Modal id={this.props.id}>
       <div className="modal-header">
         <h5 className="modal-title">Create New Project</h5>
         <button

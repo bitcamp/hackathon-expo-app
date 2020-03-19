@@ -47,9 +47,7 @@ export default function CreateSponsorModal(props) {
         setAccessError(false);
         setCompanyError(false);
 
-        document
-          .getElementById("btnHideCreateSponsorModal" + props.createID)
-          .click();
+        document.getElementById("btnHideCreateSponsorModal" + props.id).click();
       } else {
         setAccessError(!validAccess);
         setCompanyError(missingCompany);
@@ -58,7 +56,7 @@ export default function CreateSponsorModal(props) {
   };
 
   return (
-    <Modal id={props.createID}>
+    <Modal id={props.id}>
       <div className="modal-header">
         <h5 className="modal-title">Create New Sponsor</h5>
         <button
@@ -105,7 +103,7 @@ export default function CreateSponsorModal(props) {
         <button
           type="button"
           className="button button-secondary"
-          id={"btnHideCreateSponsorModal" + props.createID}
+          id={"btnHideCreateSponsorModal" + props.id}
           data-dismiss="modal"
         >
           Cancel

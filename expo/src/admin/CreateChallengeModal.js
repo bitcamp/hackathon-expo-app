@@ -44,9 +44,7 @@ export default function CreateChallengeModal(props) {
         })
         .then(props.onCreate);
 
-      document
-        .getElementById("btnHideCreateChallengeModal" + props.createID)
-        .click();
+      document.getElementById("btnHideCreateChallengeModal" + props.id).click();
     } else {
       setMissingFields(missingFields);
       setWinnerError(winnerLessZero);
@@ -54,7 +52,7 @@ export default function CreateChallengeModal(props) {
   };
 
   return (
-    <Modal id={props.createID}>
+    <Modal id={props.id}>
       <div className="modal-header">
         <h5 className="modal-title">Create Challenge for {props.company}</h5>
         <button
@@ -96,7 +94,7 @@ export default function CreateChallengeModal(props) {
         <button
           type="button"
           className="button button-secondary"
-          id={"btnHideCreateChallengeModal" + props.createID}
+          id={"btnHideCreateChallengeModal" + props.id}
           data-dismiss="modal"
         >
           Cancel

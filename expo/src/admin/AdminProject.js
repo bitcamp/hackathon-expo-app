@@ -256,7 +256,7 @@ class ProjectModule extends Component {
         <EditProjectModal
           index={index}
           key={"editProjectModal" + index}
-          editID={"modalEditProject" + index.toString()}
+          id={"modalEditProject" + index.toString()}
           projectID={elt.project_id}
           project_name={elt.project_name}
           project_table={elt.table_number}
@@ -439,7 +439,7 @@ class ProjectModule extends Component {
             </SmallerParentheses>
           </h5>
           <CreateProjectModal
-            createID="modalCreateProject"
+            id="modalCreateProject"
             onCreate={this.props.loadProjects}
             allChallenges={allChallenges}
             company_map={challengesToCompanyMap}

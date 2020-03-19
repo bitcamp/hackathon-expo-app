@@ -8,11 +8,6 @@ import ConfirmationButton from "admin/ConfirmationButton";
 
 import "App.css";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
-library.add(faTimes);
-library.add(faCheck);
-
 let challengeStore = [];
 
 class EditProjectModal extends Component {
@@ -85,7 +80,7 @@ class EditProjectModal extends Component {
         });
       }
       document
-        .getElementById("btnCancelEditProjectModal" + this.props.editID)
+        .getElementById("btnCancelEditProjectModal" + this.props.id)
         .click();
     }
   };
@@ -117,20 +112,20 @@ class EditProjectModal extends Component {
         this.props.onEdit();
         // Reset state and close modal
         document
-          .getElementById("btnCloseEditProjectModal" + this.props.editID)
+          .getElementById("btnCloseEditProjectModal" + this.props.id)
           .click();
       });
   };
 
   render = () => {
     return (
-      <Modal id={this.props.editID}>
+      <Modal id={this.props.id}>
         <div className="modal-header">
           <h5 className="modal-title"> Edit Project </h5>
           <button
             type="button"
             className="close"
-            id={`btnCloseEditProjectModal${this.props.editID}`}
+            id={`btnCloseEditProjectModal${this.props.id}`}
             data-dismiss="modal"
             aria-label="Close"
           >
@@ -178,9 +173,9 @@ class EditProjectModal extends Component {
                 }
               />
             </div>
-            {this.state.error ? (
+            {this.state.error && (
               <Error text="One or more fields are empty!"></Error>
-            ) : null}
+            )}
             <div className="form-group" id={this.state.project_id}>
               <label> Attempted Challenges </label>
               <br />
@@ -198,6 +193,8 @@ class EditProjectModal extends Component {
                     />
                   );
                 }
+                // do we ever actually hit this?
+                return null;
               })}
             </div>
             <br />
@@ -225,7 +222,7 @@ class EditProjectModal extends Component {
                 type="button"
                 className="button button-secondary m-r-s"
                 onClick={this.props.closeModal}
-                id={"btnCancelEditProjectModal" + this.props.editID}
+                id={"btnCancelEditProjectModal" + this.props.id}
                 data-dismiss="modal"
               >
                 Cancel

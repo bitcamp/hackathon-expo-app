@@ -80,7 +80,7 @@ class EditSponsorModal extends Component {
           missing_access: false
         });
         document
-          .getElementById("btnCancelEditSponsorModal" + this.props.editID)
+          .getElementById("btnCancelEditSponsorModal" + this.props.id)
           .click();
       } else {
         this.setState({
@@ -104,14 +104,14 @@ class EditSponsorModal extends Component {
           missing_access: false
         });
         document
-          .getElementById("btnCloseEditSponsorModal" + this.props.editID)
+          .getElementById("btnCloseEditSponsorModal" + this.props.id)
           .click();
       });
   };
 
   render() {
     return (
-      <div className="modal fade" id={this.props.editID}>
+      <div className="modal fade" id={this.props.id}>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -119,7 +119,7 @@ class EditSponsorModal extends Component {
               <button
                 type="button"
                 className="close"
-                id={`btnCloseEditSponsorModal${this.props.editID}`}
+                id={`btnCloseEditSponsorModal${this.props.id}`}
                 data-dismiss="modal"
                 aria-label="Close"
               >
@@ -177,7 +177,7 @@ class EditSponsorModal extends Component {
                   <button
                     type="button"
                     className="button button-secondary m-r-s"
-                    id={"btnCancelEditSponsorModal" + this.props.editID}
+                    id={"btnCancelEditSponsorModal" + this.props.id}
                     data-dismiss="modal"
                     onClick={() => {
                       this.setState({

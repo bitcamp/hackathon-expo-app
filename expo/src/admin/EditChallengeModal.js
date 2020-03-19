@@ -114,7 +114,7 @@ class EditChallengeModal extends Component {
           });
 
           document
-            .getElementById("btnHideCreateChallengeModal" + this.props.editID)
+            .getElementById("btnHideCreateChallengeModal" + this.props.id)
             .click();
         }
 
@@ -154,7 +154,7 @@ class EditChallengeModal extends Component {
 
   render() {
     return (
-      <Modal id={this.props.editID}>
+      <Modal id={this.props.id}>
         <div className="modal-header">
           <h5 className="modal-title">Edit Challenge</h5>
           <button
@@ -224,7 +224,7 @@ class EditChallengeModal extends Component {
               <button
                 type="button"
                 className="button button-secondary m-r-s"
-                id={"btnHideCreateChallengeModal" + this.props.editID}
+                id={"btnHideCreateChallengeModal" + this.props.id}
                 data-dismiss="modal"
                 onClick={() => {
                   this.setState({

@@ -71,35 +71,13 @@ function DiversifyWinnersModal() {
 
 export function CheckBoxColumn(props) {
   let checkbox = props.checked ? faCheckSquare : faSquare;
-  let input = props.checked ? (
-    props.disabled ? (
-      <input
-        type="checkbox"
-        className="voting-checkbox"
-        value={props.project_id}
-        checked
-        disabled
-      />
-    ) : (
-      <input
-        type="checkbox"
-        className="voting-checkbox"
-        value={props.project_id}
-        checked
-      />
-    )
-  ) : props.disabled ? (
+  let input = (
     <input
       type="checkbox"
       className="voting-checkbox"
       value={props.project_id}
-      disabled
-    />
-  ) : (
-    <input
-      type="checkbox"
-      className="voting-checkbox"
-      value={props.project_id}
+      checked={props.checked}
+      disabled={props.disabled}
     />
   );
   let checkboxStyle = props.checked
@@ -115,7 +93,9 @@ export function CheckBoxColumn(props) {
     <FontAwesomeIcon
       icon={checkbox}
       className={checkboxStyle}
-      onClick={this.props.vote_handler.bind(this, props.project_id)}
+      onClick={() => {
+        props.vote_handler(props.project_id);
+      }}
     />
   );
   return (
